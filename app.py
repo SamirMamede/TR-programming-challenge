@@ -13,6 +13,8 @@ def main() -> None:
         countries_capital = data[i]['capital'][0]
         countries_area = data[i]['area']
         countries_currencies = data[i]['currencies']
+        for key in countries_currencies:
+            countries_currencies = key
 
         print(countries_name)
         print(countries_capital)
