@@ -8,26 +8,33 @@ def main() -> None:
     countries = requests.get(url)
     data = countries.json()
 
+    planilha = openpyxl.Workbook()
+    planilha.create_sheet('Country')
+    page_countries = planilha['Country']
+
+    page_countries.append(['Name', 'Capital', 'Area', 'Currencies'])
+
+
     for i in range (len(data)):
-        countries_name = data[i]['name']['official']
-        countries_capital = data[i]['capital'][0]
+        
+        countries_name = data[i]['name']['common']
+        try:
+            countries_capital = data[i]['capital']
+            for key in countries_capital:
+                countries_capital = key
+        except:
+            countries_capital = '-' 
         countries_area = data[i]['area']
-        countries_currencies = data[i]['currencies']
-        for key in countries_currencies:
-            countries_currencies = key
+        try:
+            countries_currencies = data[i]['currencies']
+            for key in countries_currencies:
+                countries_currencies = key
+        except:
+            countries_currencies = '-'
 
-        print(countries_name)
-        print(countries_capital)
-        print(countries_area)
-        print(countries_currencies)
-
-
-#    planilha = openpyxl.Workbook()
-#    planilha.create_chartsheet('Countries')
-#    page_countries = planilha['Countries']
-
-#    page_countries.append(['Name', 'Capital', 'Area', 'Currencies'])
-#    page_countries.append([])
+        page_countries.append([countries_name, countries_capital, countries_area, countries_currencies])
+    
+    planilha.save('Countries list.xlsx')
 
 
 if __name__ == "__main__":
