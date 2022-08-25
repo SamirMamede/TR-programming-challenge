@@ -9,3 +9,6 @@ shown above.
 
 #### Language: Python.
 #### Libs: Requests, Openpyxl.
+#### To run the application you need to have a version of python installed on your machine.
+- Pyhton download: https://www.python.org/downloads/
+- Command to run application: "py app.py"
