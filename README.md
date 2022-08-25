@@ -12,3 +12,4 @@ shown above.
 #### To run the application you need to have a version of python installed on your machine.
 - Pyhton download: https://www.python.org/downloads/
 - Command to run application: "py app.py"
+- API Documentation: https://restcountries.com/#api-endpoints-v3-all
